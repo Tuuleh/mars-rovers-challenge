@@ -67,21 +67,22 @@ def deploy_rovers(request):
     ps = PlaneSerializer(data=data['plane'])
     if ps.is_valid():
         plane = ps.save()
+    else:
+        return Response(ps.errors)
+    res_data = []
     for rover in data['rovers']:
-        print('PLANEPLANEPLANEPLANEPLANEPLANE', plane, plane.id)
         rs = RoverSerializer(data={
             'latitude': rover['latitude'],
             'longitude': rover['longitude'],
             'direction': rover['direction'],
-            'plane': plane,
-            'owner': request.user
+            'plane': plane.id,
+            'owner': request.user.id
         })
         if rs.is_valid():
             rv = rs.save()
-            print('ROVERORVEOROR', rv.data, rs.data)
-            rv.process_command()
+            rv.process_command(rover['command'])
+            res_data.append(RoverSerializer(rv).data)
         else:
-            print(rs.errors)
+            return Response(rs.errors)
 
-
-    return Response({})
+    return Response(res_data)

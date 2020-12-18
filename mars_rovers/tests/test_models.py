@@ -11,9 +11,9 @@ class RoverTest(TestCase):
         Rover.objects.create(
             plane=Plane.objects.create(height=5, width=5),
             owner=User.objects.create_user(username='testuser', password='12345'),
-            direction="N",
-            latitude=1,
-            longitude=2
+            direction="E",
+            latitude=3,
+            longitude=3
         )
 
     def test_process_valid_command(self):
@@ -21,11 +21,11 @@ class RoverTest(TestCase):
         Test that when processing a command, the rover's position changes as expected
         """
         rover = Rover.objects.last()
-        command = "LMLMLMLMM"
+        command = "MMRMMRMRRM"
         rover.process_command(command)
+        self.assertEqual(rover.longitude, 5)
         self.assertEqual(rover.latitude, 1)
-        self.assertEqual(rover.longitude, 3)
-        self.assertEqual(rover.direction, "N")
+        self.assertEqual(rover.direction, "E")
 
     def test_process_invalid_command(self):
         """

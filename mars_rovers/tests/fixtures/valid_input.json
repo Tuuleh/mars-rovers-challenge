@@ -5,15 +5,15 @@
   },
   "rovers": [
     {
-      "latitude": 1,
-      "longitude": 2,
+      "longitude": 1,
+      "latitude": 2,
       "direction": "N",
       "command": "LMLMLMLMM"
     },
     {
-      "latitude": 3,
       "longitude": 3,
-      "direction": "N",
+      "latitude": 3,
+      "direction": "E",
       "command": "MMRMMRMRRM"
     }
   ]

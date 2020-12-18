@@ -17,7 +17,7 @@ class RoverDeploymentTests(APITestCase):
         self.user = User.objects.create_user(username=self.username, password=self.password)
 
     def test_deploy_rover(self):
-        self.client.login(username=self.username, password=self.password)
         """ full test case for a valid call to the rover deployment api endpoint """
+        self.client.login(username=self.username, password=self.password)
         resp = self.client.post('/rovers/deploy/', valid_input, format='json')
-        print("resp in test", resp.data)
+        self.assertEqual(resp.data, valid_output)

@@ -68,11 +68,11 @@ class Rover(models.Model):
         Move the rover one unit towards the direction it's facing.
         """
         if self.direction == "N":
-            self.longitude += 1
-        elif self.direction == "S":
-            self.longitude -= 1
-        elif self.direction == "E":
-            self.latitude -= 1
-        else:
             self.latitude += 1
-        return self
+        elif self.direction == "S":
+            self.latitude -= 1
+        elif self.direction == "E":
+            self.longitude += 1
+        else:
+            self.longitude -= 1
+        return self.save()
