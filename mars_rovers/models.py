@@ -36,6 +36,7 @@ class Rover(models.Model):
     longitude = models.IntegerField()
 
     def process_command(self, command):
+        print('Processing command')
         # Throw if the command contains any other letters than M, L or R - that makes it invalid
         regex = r'[^MLR]'
         if re.search(regex, command):
@@ -44,7 +45,6 @@ class Rover(models.Model):
                 code='invalid'
             )
         for step in command:
-            print(step)
             if step == 'M':
                 self.move()
             else:
@@ -61,7 +61,6 @@ class Rover(models.Model):
             new_bearing_index = (current_bearing_index + 1)
         new_bearing_index %= len(valid_directions)
         self.direction = valid_directions[new_bearing_index]
-        print("self", self)
         return self
 
     def move(self):

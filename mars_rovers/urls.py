@@ -20,6 +20,6 @@ from mars_rovers import views
 urlpatterns = [
     path('rovers/', views.RoverList.as_view(), name='rover-list'),
     path('rovers/<int:pk>', views.RoverDetail.as_view(), name='rover-detail'),
-    path('rovers/deploy', views.deploy_rovers),
+    path('rovers/deploy/', views.deploy_rovers, name='deploy-rovers'),
     path('api-auth/', include('rest_framework.urls'))
 ]
