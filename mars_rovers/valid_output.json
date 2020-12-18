@@ -1,0 +1,19 @@
+{
+  "plane": {
+    "width": 5,
+    "height": 5,
+    "id": 1
+  },
+  "rovers": [
+    {
+      "latitude": 1,
+      "longitude": 3,
+      "direction": "N"
+    },
+    {
+      "latitude": 5,
+      "longitude": 1,
+      "direction": "E"
+    }
+  ]
+}
