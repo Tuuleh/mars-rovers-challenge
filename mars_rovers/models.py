@@ -36,7 +36,9 @@ class Rover(models.Model):
     longitude = models.IntegerField()
 
     def process_command(self, command):
-        print('Processing command')
+        """
+        Process the string command entered in the input for this particular rover - move, turn left or right
+        """
         # Throw if the command contains any other letters than M, L or R - that makes it invalid
         regex = r'[^MLR]'
         if re.search(regex, command):

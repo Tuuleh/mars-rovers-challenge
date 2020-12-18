@@ -12,6 +12,10 @@ with open('mars_rovers/tests/fixtures/valid_output.json') as f:
 
 class RoverDeploymentTests(APITestCase):
     def setUp(self):
+        """
+        Set up authentication - rovers need to be created for the user making the request and so authentication
+        needs to be done on the client before a request can be successful
+        """
         self.username = 'kittykat'
         self.password = 'password'
         self.user = User.objects.create_user(username=self.username, password=self.password)
